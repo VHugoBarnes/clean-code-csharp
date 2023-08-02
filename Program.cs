@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ToDo
 {
-  internal class Program
+  internal class ToDoProgram
   {
     public static List<string> TaskList { get; set; }
 
@@ -43,8 +43,8 @@ namespace ToDo
       Console.WriteLine("4. Salir");
 
       // Read line
-      string line = Console.ReadLine();
-      return Convert.ToInt32(line);
+      string userResponse = Console.ReadLine();
+      return Convert.ToInt32(userResponse);
     }
 
     public static void RemoveTaskMenu()
@@ -59,16 +59,16 @@ namespace ToDo
         }
         Console.WriteLine("----------------------------------------");
 
-        string line = Console.ReadLine();
+        string userResponse = Console.ReadLine();
         // Remove one position
-        int indexToRemove = Convert.ToInt32(line) - 1;
+        int indexToRemove = Convert.ToInt32(userResponse) - 1;
         if (indexToRemove > -1)
         {
           if (TaskList.Count > 0)
           {
-            string task = TaskList[indexToRemove];
+            string taskToRemove = TaskList[indexToRemove];
             TaskList.RemoveAt(indexToRemove);
-            Console.WriteLine("Tarea " + task + " eliminada");
+            Console.WriteLine("Tarea " + taskToRemove + " eliminada");
           }
         }
       }
@@ -82,8 +82,8 @@ namespace ToDo
       try
       {
         Console.WriteLine("Ingrese el nombre de la tarea: ");
-        string task = Console.ReadLine();
-        TaskList.Add(task);
+        string taskToAdd = Console.ReadLine();
+        TaskList.Add(taskToAdd);
         Console.WriteLine("Tarea registrada");
       }
       catch (Exception)
