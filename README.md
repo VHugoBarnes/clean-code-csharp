@@ -1,2 +1,12 @@
-## Código base para completar el curso de buenas prácticas y código limpio en C#
-Debe descargar el codigo y usar el branch master o 0-codigobase
+# Clean code in C#
+In this small repo the start point was a messy ToDo CLI with bad practices.
+
+The excersice was to improve the code following these rules:
+
+1. Naming
+2. Code Smells
+3. DRY
+4. KISS
+5. Try/Catch
+6. New C# syntaxis
+7. Comments
