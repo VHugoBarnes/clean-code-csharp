@@ -58,18 +58,26 @@ namespace ToDo
         string userResponse = Console.ReadLine();
         // Remove one position
         int indexToRemove = Convert.ToInt32(userResponse) - 1;
-        if (indexToRemove > -1)
+
+        if (indexToRemove > (TaskList.Count - 1) || indexToRemove <= 0)
         {
-          if (TaskList.Count > 0)
-          {
-            string taskToRemove = TaskList[indexToRemove];
-            TaskList.RemoveAt(indexToRemove);
-            Console.WriteLine("Tarea " + taskToRemove + " eliminada");
-          }
+          Console.WriteLine("El numero seleccionado no es valido");
+          Console.WriteLine();
+          return;
+        }
+
+        if (indexToRemove > -1 && TaskList.Count > 0)
+        {
+          string taskToRemove = TaskList[indexToRemove];
+          TaskList.RemoveAt(indexToRemove);
+          Console.WriteLine("Tarea " + taskToRemove + " eliminada");
+          Console.WriteLine();
         }
       }
       catch (Exception)
       {
+        Console.WriteLine("Ha ocurrido un error al eliminar la tarea");
+        Console.WriteLine();
       }
     }
 
@@ -78,12 +86,23 @@ namespace ToDo
       try
       {
         Console.WriteLine("Ingrese el nombre de la tarea: ");
-        string taskToAdd = Console.ReadLine();
+        string taskToAdd = Console.ReadLine().Trim();
+
+        if (taskToAdd == "")
+        {
+          Console.WriteLine("Escribe una tarea valida");
+          Console.WriteLine();
+          return;
+        }
+
         TaskList.Add(taskToAdd);
         Console.WriteLine("Tarea registrada");
+        Console.WriteLine();
       }
       catch (Exception)
       {
+        Console.WriteLine("No se pudo agregar la tarea");
+        Console.WriteLine();
       }
     }
 
@@ -101,11 +120,10 @@ namespace ToDo
       else
       {
         Console.WriteLine("----------------------------------------");
-        for (int i = 0; i < TaskList.Count; i++)
-        {
-          Console.WriteLine((i + 1) + ". " + TaskList[i]);
-        }
+        var indexTask = 0;
+        TaskList.ForEach(task => Console.WriteLine(++indexTask + ". " + task));
         Console.WriteLine("----------------------------------------");
+        Console.WriteLine();
       }
     }
   }
