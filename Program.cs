@@ -70,7 +70,7 @@ namespace ToDo
         {
           string taskToRemove = TaskList[indexToRemove];
           TaskList.RemoveAt(indexToRemove);
-          Console.WriteLine("Tarea " + taskToRemove + " eliminada");
+          Console.WriteLine($"Tarea {taskToRemove} eliminada");
           Console.WriteLine();
         }
       }
@@ -121,7 +121,7 @@ namespace ToDo
       {
         Console.WriteLine("----------------------------------------");
         var indexTask = 0;
-        TaskList.ForEach(task => Console.WriteLine(++indexTask + ". " + task));
+        TaskList.ForEach(task => Console.WriteLine($"{++indexTask}. {task}"));
         Console.WriteLine("----------------------------------------");
         Console.WriteLine();
       }
